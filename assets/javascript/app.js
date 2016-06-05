@@ -29,14 +29,17 @@ $(document).ready(function() {
 
     /* ****************************************************************************************************** */
     
+    function initVars(){
 
-    var questionCtr = 0;
-    var questionsRight = 0;
-    var questionsWrong = 0;
-    var questionsUnanswered = 0;
+      questionCtr = 0;
+      questionsRight = 0;
+      questionsWrong = 0;
+      questionsUnanswered = 0;
 
-    var ctrTimer = 5;
-    var timerId = 0;
+      ctrTimer = 5;
+      timerId = 0;
+
+    }
 
 
     /* ****************************************************************************************************** */
@@ -46,13 +49,12 @@ $(document).ready(function() {
 
     //  Begin - On window load, display start screen
     window.onload = function () {
+        initVars();
         dispFirstScreen();
         //alert("LOADED!");
         $("#button1").click(function(){
             $("#insertHere").empty();
-
-                 
-            
+          
             if(questionCtr <= trivia.length){
                 displayQuestions(questionCtr);
                 start1();
@@ -60,9 +62,8 @@ $(document).ready(function() {
               else
                 displayLastScreen();
 
-
-
         });
+
     }
 
     /* ****************************************************************************************************** */
@@ -214,7 +215,14 @@ $(document).ready(function() {
         $("#insertHere").append($("<div></div>").text("Incorrect Answers: " + questionsWrong ));
         $("#insertHere").append($("<div></div>").text("Unanswered Questions: " + questionsUnanswered));
         $("#insertHere").append($("<br>").text("  " ));
-        $("#insertHere").append($("<div></div>").text("Start Over?" ));
+        $("#insertHere").append($("<div id='startOver'></div>").text("Start Over?" ));
+
+        $("#startOver").click(function(){
+          alert("Start Over");
+          initVars()                      // init the variables
+          displayQuestions(questionCtr);  // display the question page
+          start1();                       // start the timer
+        }); 
     }
 
 
