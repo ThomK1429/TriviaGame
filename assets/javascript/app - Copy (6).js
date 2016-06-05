@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     var ctrTimer = 5;
     var timerId = 0;
-
+    
 
     /* ****************************************************************************************************** */
     
@@ -51,9 +51,12 @@ $(document).ready(function() {
         $("#button1").click(function(){
             $("#insertHere").empty();
 
-                 
+
+          $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+           
             
             if(questionCtr <= trivia.length){
+                //displayLastScreen();
                 displayQuestions(questionCtr);
                 start1();
               }
@@ -68,7 +71,7 @@ $(document).ready(function() {
     /* ****************************************************************************************************** */
 
     function start1(){
-      timerId = setInterval(next1, 1000);
+      timerId = setInterval(next1, 500);
     }
 
 
@@ -78,7 +81,7 @@ $(document).ready(function() {
       ctrTimer--;
       //alert("ctrTimer=" + ctrTimer);
       
-      
+      $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
       displayQuestions(questionCtr);
 
 
@@ -99,9 +102,11 @@ $(document).ready(function() {
           questionsUnanswered++;
           questionCtr++;
 
-         
           ctrTimer = 5;
           
+
+          ctrTimer = 5;
+          $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
           displayQuestions(questionCtr);
           start1();
         }
@@ -142,7 +147,7 @@ $(document).ready(function() {
         $("#choice00").off('click');   //disables click event
         clearInterval(timerId);
         ctrTimer = 5;
-          
+          $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
           questionCtr++;
           displayQuestions(questionCtr);
           start1();
@@ -223,8 +228,6 @@ $(document).ready(function() {
 
     function displayQuestions(questionNum) {
 
-        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
-
         $("#insertHere").append($("<div></div>").text(trivia[questionNum].question ));  
 
         $("#insertHere").append($("<div class='choices' id='choice00'></div>").text(trivia[questionNum].choices[0] )); 
@@ -233,7 +236,7 @@ $(document).ready(function() {
         $("#insertHere").append($("<div class='choices' id='choice03'></div>").text(trivia[questionNum].choices[3] )); 
 
         //  alert(trivia[0].question + trivia[0].choices[trivia[0].answer] );
-    };   
+    };   /*   End displayQuestions processing */
 
 
     /* ****************************************************************************************************** */
