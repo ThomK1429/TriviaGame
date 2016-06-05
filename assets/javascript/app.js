@@ -89,13 +89,18 @@ $(document).ready(function() {
       displayQuestions(questionCtr);
 
 
-      //alert();
-      if(questionCtr > trivia.length){
+      console.log("questionCtr" + questionCtr);
+      console.log("trivia length" + trivia.length);
+      if(questionCtr >= (trivia.length - 1)){
+          clearInterval(timerId);
+          $("#insertHere").empty();
+          ctrTimer = 10;
+          $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
           displayLast();
         }
 
       if(ctrTimer === 0){
-          alert('time\'s up');
+          //alert('time\'s up');
           clearInterval(timerId);
           questionsUnanswered++;
           //alert("questionsRight" + questionsRight);
