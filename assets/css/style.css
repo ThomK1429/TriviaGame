@@ -1,0 +1,34 @@
+body{ 
+	background-image: url("../images/floorv1.jpg");
+}
+
+
+h1{
+	font-size: 50px;
+}
+
+
+#hdr{
+	font-size: 15px;
+}
+
+.container {
+		margin-top: 50px;
+
+		height: 568px;
+        
+    background-color: rgb(219,216,145);
+ 
+    
+}
+
+.col-md-10, .col-md-6 {
+
+	align: center;
+	text-align: center;
+	
+}
+
+#button1 {
+	margin-top: 200px;
+}

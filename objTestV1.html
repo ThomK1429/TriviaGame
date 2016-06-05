@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>objTest</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+<p id="demo"></p>
+<div id="div1"><span id="question"></span></div>
+<div id="div2"><span id="choice01"></span></div>
+<div id="div3"></div>
+<div id="div4"></div>
+<div id="div5"></div>
+
+
+<script>
+function triviaFunc(quest, choice_01, choice_02, choice_03, choice_04, ans) {
+    this.question = quest;
+    this.choices = [choice_01, choice_02, choice_03, choice_04];
+    this.answer = ans;
+}
+
+var trivia = [];
+
+
+
+trivia.push( new triviaFunc("This is a question?", "Answer 01", "Answer 02", "Answer 02", "Answer 02", 0));
+trivia.push( new triviaFunc("g", "h", "i", "j", "k", 3));
+
+$('#question').html(trivia[0].question);
+$('#choice01').html(trivia[0].choices[0]);
+
+
+ //alert(trivia[0].question + trivia[0].choices[trivia[0].answer] );
+ //alert(trivia[1].question + trivia[1].choices[trivia[1].answer] );
+ 
+ 
+</script>
+
+</body>
+</html>

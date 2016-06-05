@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>objTest</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+function triviaFunc(quest, choice_01, choice_02, choice_03, choice_04, ans) {
+    this.question = quest;
+    this.choice01 = choice_01;
+    this.choice02 = choice_02;
+    this.choice03 = choice_03;
+    this.choice04 = choice_04;
+    this.answer = ans;
+}
+
+var trivia = [];
+
+
+
+trivia.push( new triviaFunc("a", "b", "c", "d", "e", 0));
+trivia.push( new triviaFunc("g", "h", "i", "j", "k", 3));
+
+ alert(trivia[0].question + trivia[0].answer );
+ 
+</script>
+
+</body>
+</html>
