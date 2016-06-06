@@ -33,42 +33,42 @@ $(document).ready(function() {
                                     "England", "Belgium", "Ireland", "Germany", 
                                     0));
 
-        trivia.push( new triviaFunc("question 2 - Most of the Beatles were born in ?",
+        trivia.push( new triviaFunc("Question 2 - Most of the Beatles were born in ?",
                                     "London", "Liverpool", "Birmingham", "Glasgow", 
                                     1));
-        trivia.push( new triviaFunc("question 3 - What year did the Beatles first arrive in the USA?", 
+        trivia.push( new triviaFunc("Question 3 - What year did the Beatles first arrive in the USA?", 
                                     "1961", "1962", "1963", "1964",  
                                     3));
 
-        trivia.push( new triviaFunc("question 4 - What was the name of the Beatles manager?", 
+        trivia.push( new triviaFunc("Question 4 - What was the name of the Beatles manager?", 
                                     "Freddie Epstein", "Billy J. Epstein", "Brian S. Epstein", "S. Wm. Epstein", 
                                     2));
 
-        trivia.push( new triviaFunc("question 5 - Who was the fifth Beatle?", 
+        trivia.push( new triviaFunc("Question 5 - Who was the fifth Beatle?", 
                                     "Paul McCartney", "George Martin", "Ringo Starr", "George Harrison", 
                                     1));
 
-        trivia.push( new triviaFunc("question 6 - Who was the first drummer for the Beatles?",   
+        trivia.push( new triviaFunc("Question 6 - Who was the first drummer for the Beatles?",   
                                     "Ringo Starr", "Pete Best", "Buddy Rich", "Billy Preston", 
                                     1));
 
-        trivia.push( new triviaFunc("question 7 - Who was the Beatles original bass guitarist?",   
+        trivia.push( new triviaFunc("Question 7 - Who was the Beatles original bass guitarist?",   
                                     "Paul McCartney", "Pete Best", "Stuart Sutcliffe", "Billy Preston", 
                                     2));
 
-        trivia.push( new triviaFunc("question 8 - Who who also was considered the 'fifth Beatle?",  
+        trivia.push( new triviaFunc("Question 8 - Who who also was considered the 'fifth Beatle?",  
                                     "John Lennon", "George Harrison", "Pete Best", "Billy Preston", 
                                     3));
 
-        trivia.push( new triviaFunc("question 9 - Which was not an album produced by the Beatles?",  
+        trivia.push( new triviaFunc("Question 9 - Which was not an album produced by the Beatles?",  
                                     "Revolver", "Abbey Road", "Dr. Pepper's Lonely Hearts Club Band", "Something New", 
                                     2));
 
-        trivia.push( new triviaFunc("question 10 - Which was not an song produced by the Beatles?",  
+        trivia.push( new triviaFunc("Question 10 - Which was not an song produced by the Beatles?",  
                                     "Something", "Let It Be Me", "She Loves You", "The Long and Windy Road", 
                                     1));
 
-
+       
 
 
 
@@ -332,17 +332,9 @@ $(document).ready(function() {
     /* ****************************************************************************************************** */
 
     function dispFirstScreen() {
-        var div = document.getElementById('insertHere');
-        var btn = document.createElement('button');
 
-        var txt = document.createTextNode(String("START"));
-           btn.appendChild(txt);
-
-      btn.setAttribute('type', 'button');
-      
-      btn.setAttribute('id', 'button1' );
-      btn.setAttribute('class', 'btn btn-primary btn-lg btn-block');
-      div.appendChild(btn);
+      $("#insertHere").append($("<button id='button1' class='btn btn-primary btn-lg '>Start - Beatle Trivia</button>"));
+    
     };  
 
       
@@ -356,7 +348,9 @@ $(document).ready(function() {
         $("#insertHere").append($("<div></div>").text("Incorrect Answers: " + questionsWrong ));
         $("#insertHere").append($("<div></div>").text("Unanswered Questions: " + questionsUnanswered));
         $("#insertHere").append($("<br>").text("  " ));
-        $("#insertHere").append($("<div id='startOver'></div>").text("Start Over?" ));
+        //$("#insertHere").append($("<div id='startOver'></div>").text("Start Over?" ));
+        $("#insertHere").append($("<button id='startOver' class='btn btn-primary btn-lg'>Start game over ... from the top</button>"));
+        
 
         $("#startOver").click(function(){
           //alert("Start Over");
@@ -381,36 +375,7 @@ $(document).ready(function() {
         $("#insertHere").append($("<div class='choices' id='choice02'></div><br>").text(trivia[questionNum].choices[2] )); 
         $("#insertHere").append($("<div class='choices' id='choice03'></div><br>").text(trivia[questionNum].choices[3] )); 
 
-        /*$("#choice00").hover(function(){
-          clickSound.play();
-          $(this).css("background-color", "yellow"  );
-
-        });
-
-        //$('#choice00').off('hover');
-        //$('#choice01').off('hover');
-
-
-        $("#choice01").hover(function(){
-          clickSound.play();
-          $(this).css("background-color", "yellow"  );
-
-        });
-
-        $("#choice02").hover(function(){
-          clickSound.play();
-          $(this).css("background-color", "yellow"  );
-
-        });
-
-         $("#choice03").hover(function(){
-          clickSound.play();
-          $(this).css("background-color", "yellow"  );
-
-        }); */
-    
-
-        //  alert(trivia[0].question + trivia[0].choices[trivia[0].answer] );
+        
     };   
 
 
@@ -427,10 +392,6 @@ $(document).ready(function() {
         $("#insertHere").append($("<div></div>").text("The Correct Answer was: " 
           + trivia[questionCtr].choices[trivia[questionCtr].answer]));
     }
-
-
-
-    
 
     
     /* ****************************************************************************************************** */
