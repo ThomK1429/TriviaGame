@@ -9,7 +9,8 @@ $(document).ready(function() {
     var questionsUnanswered = 0;
 
     var ctrTimer = 5;
-    var timerId = 0;
+    var timerId1000 = 0;
+    var timerId5000 = 0;
 
     var clickSound  = new Audio("assets/sounds/click_sound.mp3");
 
@@ -86,21 +87,7 @@ $(document).ready(function() {
     }
 
 
-    function dispTimeOut( ){
-
-        //alert("Disp Time Out");
-
-        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
-
-        $("#insertHere").append($("<div></div>").text("Out of Time!" ));  
-        $("#insertHere").append($("<br>").text("  " ));
-        $("#insertHere").append($("<div></div>").text("The Correct Answer was: " + trivia[questionCtr].answer));
-        
-
-        
-    }
-
-
+    
     /* ****************************************************************************************************** */
     
 
@@ -115,6 +102,7 @@ $(document).ready(function() {
         dispFirstScreen();
         //alert("LOADED!");
         $("#button1").click(function(){
+            clickSound.play();
             $("#insertHere").empty();
           
             if(questionCtr <= trivia.length){
@@ -131,14 +119,20 @@ $(document).ready(function() {
     /* ****************************************************************************************************** */
 
     function start1(){
-      //timerId = setInterval(next1, 1000);
-      timerId = setInterval(next1, 1000);
+      //timerId1000 = setInterval(next1, 1000);
+      timerId1000 = setInterval(next1, 1000);
     }
 
+
+    function start5000(){
+      //timerId1000 = setInterval(next1, 1000);
+      timerId5000 = setInterval(next1, 5000);
+    }
 
     /* ****************************************************************************************************** */
 
     function next1(){
+      clearInterval(timerId5000);
       ctrTimer--;
       //alert("ctrTimer=" + ctrTimer);
             
@@ -147,7 +141,7 @@ $(document).ready(function() {
       //if(questionCtr >=   (trivia.length - 1) && (ctrTimer === 0) ){
       if(questionCtr >=   (trivia.length - 1) ){  
           //alert("questionCtr > trivia.length");
-          clearInterval(timerId);
+          clearInterval(timerId1000);
           $("#insertHere").empty();
           ctrTimer = 5;
           $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
@@ -159,20 +153,27 @@ $(document).ready(function() {
 
      if(ctrTimer === 0){
           //alert('time\'s up');
-          clearInterval(timerId);
+          clearInterval(timerId1000);
           questionsUnanswered++;
 
           
-          questionCtr++;
-         
+          // Display "Out of Time" screen
+          $("#insertHere2").empty();
           ctrTimer = 5;
-          
-          displayQuestions(questionCtr);
+          dispTimeOut( );
+          questionCtr++;
+
+
+          //displayQuestions(questionCtr);
+          clearInterval(timerId5000);
           start1();
+
+          return false;
         }
 
       //if(questionCtr <   (trivia.length - 1)){
       if(questionCtr <    (trivia.length - 1)){
+
         displayQuestions(questionCtr);
         } 
 
@@ -208,7 +209,7 @@ $(document).ready(function() {
             } else questionsWrong++;   
 
             $("#choice00").off('click');   //disables click event
-              clearInterval(timerId);
+              clearInterval(timerId1000);
               ctrTimer = 5;
               
               questionCtr++;
@@ -225,7 +226,7 @@ $(document).ready(function() {
             } else questionsWrong++;   
 
             $("#choice01").off('click');   //disables click event
-              clearInterval(timerId);
+              clearInterval(timerId1000);
               ctrTimer = 5;
               
               questionCtr++;
@@ -242,7 +243,7 @@ $(document).ready(function() {
             } else questionsWrong++;   
 
             $("#choice02").off('click');   //disables click event
-              clearInterval(timerId);
+              clearInterval(timerId1000);
               ctrTimer = 5;
               
               questionCtr++;
@@ -259,7 +260,7 @@ $(document).ready(function() {
             } else questionsWrong++;   
 
             $("#choice03").off('click');   //disables click event
-              clearInterval(timerId);
+              clearInterval(timerId1000);
               ctrTimer = 5;
               
               questionCtr++;
@@ -321,7 +322,7 @@ $(document).ready(function() {
 
         $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
 
-        $("#insertHere").append($("<div></div>").text(trivia[questionNum].question ));  
+        $("#insertHere").append($("<div id='insertHere2'></div>").text(trivia[questionNum].question ));  
 
         $("#insertHere").append($("<div class='choices' id='choice00'></div><br>").text(trivia[questionNum].choices[0] )); 
         $("#insertHere").append($("<div class='choices' id='choice01'></div><br>").text(trivia[questionNum].choices[1] )); 
@@ -363,13 +364,35 @@ $(document).ready(function() {
 
     /* ****************************************************************************************************** */
 
+    function dispTimeOut( ){
+
+        //alert("Disp Time Out");
+
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+
+        $("#insertHere").append($("<div></div>").text("Out of Time!" ));  
+        $("#insertHere").append($("<br>").text("  " ));
+        $("#insertHere").append($("<div></div>").text("The Correct Answer was: " 
+          + trivia[questionCtr].choices[trivia[questionCtr].answer]));
+    }
 
 
 
     
 
-        /* ****************************************************************************************************** */
     
+    /* ****************************************************************************************************** */
+
+    function dispCorrect( ){
+
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+
+        $("#insertHere").append($("<div></div>").text("Correct!" ));  
+        
+    }
+
+    /* ****************************************************************************************************** */
+
           
   });
 
