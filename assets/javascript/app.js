@@ -22,51 +22,61 @@ $(document).ready(function() {
     var trivia = [];
 
         //   Begin -- load TriviaFunc processing 
-       function triviaFunc(quest, choice_01, choice_02, choice_03, choice_04, ans) {
+       function triviaFunc(quest, choice_01, choice_02, choice_03, choice_04, ans, photo) {
           this.question = quest;
           this.choices = [choice_01, choice_02, choice_03, choice_04];
           this.answer = ans;
+          this.photo = photo;
         } //   End TriviaFunc processing 
 
 
         trivia.push( new triviaFunc("Question 1 - What country were the Beatles from?",
                                     "England", "Belgium", "Ireland", "Germany", 
-                                    0));
+                                    0, "england.jpg"));
+
 
         trivia.push( new triviaFunc("Question 2 - Most of the Beatles were born in ?",
                                     "London", "Liverpool", "Birmingham", "Glasgow", 
-                                    1));
+                                    1, "liverpool.jpg"));
+
         trivia.push( new triviaFunc("Question 3 - What year did the Beatles first arrive in the USA?", 
                                     "1961", "1962", "1963", "1964",  
-                                    3));
+                                    3, "beatles1964.jpg"));
+
 
         trivia.push( new triviaFunc("Question 4 - What was the name of the Beatles manager?", 
                                     "Freddie Epstein", "Billy J. Epstein", "Brian S. Epstein", "S. Wm. Epstein", 
-                                    2));
+                                    2, "brianepstein.jpg"));
+
 
         trivia.push( new triviaFunc("Question 5 - Who was the fifth Beatle?", 
                                     "Paul McCartney", "George Martin", "Ringo Starr", "George Harrison", 
-                                    1));
+                                    1, "georgemartin.jpg"));
+
 
         trivia.push( new triviaFunc("Question 6 - Who was the first drummer for the Beatles?",   
                                     "Ringo Starr", "Pete Best", "Buddy Rich", "Billy Preston", 
-                                    1));
+                                    1, "petebest.jpg"));
 
         trivia.push( new triviaFunc("Question 7 - Who was the Beatles original bass guitarist?",   
                                     "Paul McCartney", "Pete Best", "Stuart Sutcliffe", "Billy Preston", 
-                                    2));
+                                    2, "stuartsutcliffe.jpg"));
+
 
         trivia.push( new triviaFunc("Question 8 - Who who also was considered the 'fifth Beatle?",  
                                     "John Lennon", "George Harrison", "Pete Best", "Billy Preston", 
-                                    3));
+                                    3, "billypreston.jpg"));
+
 
         trivia.push( new triviaFunc("Question 9 - Which was not an album produced by the Beatles?",  
                                     "Revolver", "Abbey Road", "Dr. Pepper's Lonely Hearts Club Band", "Something New", 
-                                    2));
+                                    2, "drpepper.jpg"));
+
 
         trivia.push( new triviaFunc("Question 10 - Which was not an song produced by the Beatles?",  
                                     "Something", "Let It Be Me", "She Loves You", "The Long and Windy Road", 
-                                    1));
+                                    1, "letitbeme.jpg"));
+
 
        
 
@@ -96,8 +106,6 @@ $(document).ready(function() {
     //  Begin - On window load, display start screen
     window.onload = function () {
         initVars();
-
-
 
         dispFirstScreen();
         //alert("LOADED!");
@@ -233,6 +241,7 @@ $(document).ready(function() {
 
         $("#choice00").click(function(){
             clickSound.play();
+             //$("#choice00").prop("disabled",true);
             //alert("choice00h");
             //alert("trivia[questionNum].answer=" + trivia[1].answer);
 
@@ -415,7 +424,14 @@ $(document).ready(function() {
         
         $("#insertHere").append($("<div></div>").text("The Correct Answer is: " 
           + trivia[questionCtr].choices[trivia[questionCtr].answer]));
-    }
+
+        var img = $('<br><img id="dynamic">'); 
+        img.attr('src', 'assets/images/' + trivia[questionCtr].photo);
+        img.appendTo('#insertHere');
+
+      };  
+
+    //}
 
 
 
