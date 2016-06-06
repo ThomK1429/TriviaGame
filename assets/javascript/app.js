@@ -188,6 +188,18 @@ $(document).ready(function() {
 
     function updateQRight(){
         questionsRight++;
+        clearInterval(timerId1000);
+         
+        // Display "Correct Answer" screen
+          $("#insertHere2").empty();
+          ctrTimer = 5;
+          //alert("wrong answer");
+          dispCorrectMsg( );
+          questionCtr++;
+          
+          //displayQuestions(questionCtr);
+          clearInterval(timerId5000);
+          start1();
     }
 
     /* ****************************************************************************************************** */
@@ -227,6 +239,7 @@ $(document).ready(function() {
             if(0 === trivia[questionCtr].answer){
               //alert("choice01");
               updateQRight();
+              return false;
             } else { 
                updateQWrong()
                return false;
@@ -247,6 +260,7 @@ $(document).ready(function() {
             if(1 === trivia[questionCtr].answer){
               //alert("choice01");
               updateQRight();
+              return false;
             }  else { 
                updateQWrong();
                return false;
@@ -268,6 +282,7 @@ $(document).ready(function() {
             if(2 === trivia[questionCtr].answer){
               //alert("choice02");
               updateQRight();
+              return false;
             }  else { 
                updateQWrong();
                return false;
@@ -289,6 +304,7 @@ $(document).ready(function() {
             if(3 === trivia[questionCtr].answer){
               //alert("choice03");
               updateQRight();
+              return false;
             }  else { 
                updateQWrong();
                return false;
