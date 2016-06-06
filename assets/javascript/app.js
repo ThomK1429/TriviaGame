@@ -184,14 +184,35 @@ $(document).ready(function() {
     }
 
 
+    /* ****************************************************************************************************** */
+
+    function updateQRight(){
+        questionsRight++;
+    }
 
     /* ****************************************************************************************************** */
 
-    function updateQR(){
-        questionsRight++;
+    function updateQWrong(){
         questionsWrong++;
-    }
 
+        clearInterval(timerId1000);
+         
+        // Display "Correct Answer" screen
+          $("#insertHere2").empty();
+          ctrTimer = 5;
+          //alert("wrong answer");
+          dispCorrectAns( );
+          questionCtr++;
+          
+          //displayQuestions(questionCtr);
+          clearInterval(timerId5000);
+          start1();
+
+          //return false;
+
+
+
+    }
 
     /* ****************************************************************************************************** */
 
@@ -205,8 +226,11 @@ $(document).ready(function() {
 
             if(0 === trivia[questionCtr].answer){
               //alert("choice01");
-              questionsRight++;
-            } else questionsWrong++;   
+              updateQRight();
+            } else { 
+               updateQWrong()
+               return false;
+            };   
 
             $("#choice00").off('click');   //disables click event
               clearInterval(timerId1000);
@@ -222,8 +246,12 @@ $(document).ready(function() {
             clickSound.play();
             if(1 === trivia[questionCtr].answer){
               //alert("choice01");
-              questionsRight++;
-            } else questionsWrong++;   
+              updateQRight();
+            }  else { 
+               updateQWrong();
+               return false;
+            };   
+
 
             $("#choice01").off('click');   //disables click event
               clearInterval(timerId1000);
@@ -239,8 +267,12 @@ $(document).ready(function() {
             clickSound.play();
             if(2 === trivia[questionCtr].answer){
               //alert("choice02");
-              questionsRight++;
-            } else questionsWrong++;   
+              updateQRight();
+            }  else { 
+               updateQWrong();
+               return false;
+            };   
+ 
 
             $("#choice02").off('click');   //disables click event
               clearInterval(timerId1000);
@@ -256,8 +288,12 @@ $(document).ready(function() {
             clickSound.play();
             if(3 === trivia[questionCtr].answer){
               //alert("choice03");
-              questionsRight++;
-            } else questionsWrong++;   
+              updateQRight();
+            }  else { 
+               updateQWrong();
+               return false;
+            };   
+   
 
             $("#choice03").off('click');   //disables click event
               clearInterval(timerId1000);
@@ -366,7 +402,7 @@ $(document).ready(function() {
 
     function dispTimeOut( ){
 
-        //alert("Disp Time Out");
+        // alert("Disp Time Out");
 
         $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
 
@@ -383,7 +419,7 @@ $(document).ready(function() {
     
     /* ****************************************************************************************************** */
 
-    function dispCorrect( ){
+    function dispCorrectMsg( ){
 
         $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
 
@@ -391,6 +427,24 @@ $(document).ready(function() {
         
     }
 
+    /* ****************************************************************************************************** */
+
+     function dispCorrectAns( ){
+
+        // alert("Disp Correct Answer");
+
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+
+        
+        $("#insertHere").append($("<div></div>").text("The Correct Answer is: " 
+          + trivia[questionCtr].choices[trivia[questionCtr].answer]));
+    }
+
+
+
+    
+
+    
     /* ****************************************************************************************************** */
 
           
