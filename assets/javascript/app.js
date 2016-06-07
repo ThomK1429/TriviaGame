@@ -377,7 +377,7 @@ $(document).ready(function() {
 
         $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
 
-        $("#insertHere").append($("<div id='insertHere2'></div>").text(trivia[questionNum].question ));  
+        $("#insertHere").append($("<div id='insertHere2'></div><br>").text(trivia[questionNum].question ));  
 
         $("#insertHere").append($("<div class='choices' id='choice00'></div><br>").text(trivia[questionNum].choices[0] )); 
         $("#insertHere").append($("<div class='choices' id='choice01'></div><br>").text(trivia[questionNum].choices[1] )); 
@@ -394,7 +394,7 @@ $(document).ready(function() {
 
         // alert("Disp Time Out");
 
-        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
 
         $("#insertHere").append($("<div></div>").text("Out of Time!" ));  
         $("#insertHere").append($("<br>").text("  " ));
@@ -411,7 +411,7 @@ $(document).ready(function() {
 
     function dispCorrectMsg( ){
 
-        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
 
         $("#insertHere").append($("<div></div>").text("Correct!" ));  
         
@@ -423,7 +423,7 @@ $(document).ready(function() {
 
         // alert("Disp Correct Answer");
 
-        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
+        $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
 
         
         $("#insertHere").append($("<div></div>").text("The Correct Answer is: " 
