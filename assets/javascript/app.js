@@ -400,6 +400,10 @@ $(document).ready(function() {
         $("#insertHere").append($("<br>").text("  " ));
         $("#insertHere").append($("<div></div>").text("The Correct Answer was: " 
           + trivia[questionCtr].choices[trivia[questionCtr].answer]));
+
+        var img = $('<br><img id="dynamic">'); 
+        img.attr('src', 'assets/images/' + trivia[questionCtr].photo);
+        img.appendTo('#insertHere');
     }
 
     
