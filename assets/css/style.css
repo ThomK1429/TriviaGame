@@ -40,8 +40,28 @@ h1{
 
 	align: center;
 	text-align: center;
-
 }
+
+#choice00:hover {
+  background-color: blue;
+  color: white;
+}
+
+#choice01:hover  {
+  background-color: blue;
+  color: white;
+}
+
+#choice02:hover  {
+  background-color: blue;
+  color: white;
+}
+
+#choice03:hover  {
+  background-color: blue;
+  color: white;
+}
+
 
 #startOver{
 	width: 500px;

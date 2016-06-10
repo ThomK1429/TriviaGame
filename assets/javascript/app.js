@@ -376,6 +376,7 @@ $(document).ready(function() {
     function displayQuestions(questionNum) {
 
         $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br><br>"); 
+        //$("#insertHere").append($("<div id='ctrTimer'>  </div>").text( ctrTimer )); 
 
         $("#insertHere").append($("<div id='insertHere2'></div><br>").text(trivia[questionNum].question ));  
 
