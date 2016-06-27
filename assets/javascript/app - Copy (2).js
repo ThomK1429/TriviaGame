@@ -8,8 +8,7 @@ $(document).ready(function() {
     var questionsWrong = 0;
     var questionsUnanswered = 0;
 
-    var masterTimer = 15;   // This is the master timer number in seconds for the entire pgm. 
-    var ctrTimer = masterTimer;
+    var ctrTimer = 5;
     var timerId1000 = 0;
     var timerId5000 = 0;
 
@@ -92,7 +91,7 @@ $(document).ready(function() {
       questionsWrong = 0;
       questionsUnanswered = 0;
 
-      ctrTimer = masterTimer;
+      ctrTimer = 5;
       
 
     }
@@ -135,7 +134,7 @@ $(document).ready(function() {
 
     function start5000(){
       //timerId1000 = setInterval(next1, 1000);
-      timerId5000 = setInterval(next1,  5000);
+      timerId5000 = setInterval(next1, 5000);
     }
 
     /* ****************************************************************************************************** */
@@ -152,7 +151,7 @@ $(document).ready(function() {
           //alert("questionCtr > trivia.length");
           clearInterval(timerId1000);
           $("#insertHere").empty();
-          ctrTimer = masterTimer;
+          ctrTimer = 5;
           $("#insertHere").html("Time Remaining: " + ctrTimer + " seconds." + "<br><br>"); 
           displayLastScreen();
         } 
@@ -168,7 +167,7 @@ $(document).ready(function() {
           
           // Display "Out of Time" screen
           $("#insertHere2").empty();
-          ctrTimer = masterTimer;
+          ctrTimer = 5;
           dispTimeOut( );
           questionCtr++;
 
@@ -201,7 +200,7 @@ $(document).ready(function() {
          
         // Display "Correct Answer" screen
           $("#insertHere2").empty();
-          ctrTimer = masterTimer;
+          ctrTimer = 5;
           //alert("wrong answer");
           dispCorrectMsg( );
           questionCtr++;
@@ -220,7 +219,7 @@ $(document).ready(function() {
          
         // Display "Correct Answer" screen
           $("#insertHere2").empty();
-          ctrTimer = masterTimer;
+          ctrTimer = 5;
           //alert("wrong answer");
           dispCorrectAns( );
           questionCtr++;
@@ -257,7 +256,7 @@ $(document).ready(function() {
 
             $("#choice00").off('click');   //disables click event
               clearInterval(timerId1000);
-              ctrTimer = masterTimer;
+              ctrTimer = 5;
               
               questionCtr++;
               displayQuestions(questionCtr);
@@ -279,7 +278,7 @@ $(document).ready(function() {
 
             $("#choice01").off('click');   //disables click event
               clearInterval(timerId1000);
-              ctrTimer = masterTimer;
+              ctrTimer = 5;
               
               questionCtr++;
               displayQuestions(questionCtr);
@@ -301,7 +300,7 @@ $(document).ready(function() {
 
             $("#choice02").off('click');   //disables click event
               clearInterval(timerId1000);
-              ctrTimer = masterTimer;
+              ctrTimer = 5;
               
               questionCtr++;
               displayQuestions(questionCtr);
@@ -323,7 +322,7 @@ $(document).ready(function() {
 
             $("#choice03").off('click');   //disables click event
               clearInterval(timerId1000);
-              ctrTimer = masterTimer;
+              ctrTimer = 5;
               
               questionCtr++;
               displayQuestions(questionCtr);
